@@ -4,8 +4,14 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: { 
+      inter: ['Inter', 'sans-serif'],
+      lucky: ["Luckiest Guy", "cursive"],  
+      },
+    },
   },
   plugins: [],
 }
