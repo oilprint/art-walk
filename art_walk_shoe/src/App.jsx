@@ -1,14 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { Header, Catalog } from "./sections";
+
+
 
 function App() {
- 
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    fetch("https://65d74b6527d9a3bc1d7aa870.mockapi.io/items")
+      .then((res) =>{return  res.json()})
+      .then((json) => {setItems(json);})
+  }, [])
+  
 
   return (
     <>
-      <h1 className="text-8xl font-bold font-lucky underline">Hello world!</h1>
+      <Header />
+      <div className="rounded-[40px] border border-primary max-w-[280px] w-full h-[370px]">
+        <img
+          src="/images/sneakers/2.jpg"
+          
+          alt=""
+          width="280"
+          height="370"
+        />
+      </div>
+      <Catalog items={items} />
     </>
   );
 }
