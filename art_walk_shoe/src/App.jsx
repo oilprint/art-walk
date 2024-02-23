@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Header, Catalog } from "./sections";
+import { Cart } from "./components";
 
 
 
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <>
-      {/* <Cart /> */}
+      <Cart />
       <Header />
      
       <Catalog items={items} />

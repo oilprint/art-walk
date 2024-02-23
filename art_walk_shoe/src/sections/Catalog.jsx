@@ -6,9 +6,9 @@ const Catalog = ({items}) => {
 
   return (
     <section className="relative">
-      <div className="bc-accent  sm:rounded-[60px] rounded-[40px] bg-dark" />
+      <div className="bc-accent sm:rounded-[60px] rounded-[40px] bg-dark" />
       <div className="container">
-        <h1 className= "font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-light text-center">
+        <h1 className="font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-light text-center">
           <span className="ss:text-[150px] lg:text-[200px] xs:text-[100px] text-[60px] uppercase text-stroke text-light">
             ART
           </span>
