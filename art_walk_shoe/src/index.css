@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 
+:root {
+  --dark: #040402;
+}
 
 
 
@@ -90,4 +93,22 @@ body{
 
 .btn-active {
   @apply bg-accent text-dark
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2px var(--dark);
+  text-stroke: 2px  var(--dark);
+}
+
+.bc-accent {
+  position: absolute;
+  z-index: -1;
+  max-width: 1440px;
+  width: calc(100% - 16px) ;
+  height: 40vw;
+  margin: 0 8px;
+  leat: 0;
+  right: 0;
+  top: 0;
+
 }

@@ -7,9 +7,9 @@ const Button = ({label, onClick, isAdded }) => {
     <button
       onClick={onClick}
       type="button"
-      className={`cursor-pointer px-6 pt-[13px] pb-[7px] text-base font-lucky  rounded-[40px] border-primary   ${
+      className={`cursor-pointer shrink-0 px-6 py-2 text-base font-lucky  rounded-[40px] border-2 border-primary border-solid hover:bg-accent  ${
         isAdded ? "bg-accent text-dark" : "bg-light text-primary"
-      }`}
+      } transition ease-in-out duration-300`}
     >
       {label}
     </button>

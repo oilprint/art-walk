@@ -14,16 +14,9 @@ function App() {
 
   return (
     <>
+      {/* <Cart /> */}
       <Header />
-      <div className="rounded-[40px] border border-primary max-w-[280px] w-full h-[370px]">
-        <img
-          src="/images/sneakers/2.jpg"
-          
-          alt=""
-          width="280"
-          height="370"
-        />
-      </div>
+     
       <Catalog items={items} />
     </>
   );
