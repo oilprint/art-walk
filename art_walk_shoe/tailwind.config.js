@@ -17,7 +17,8 @@ export default {
         dark:"#0C2439",
         primary: "#296A89",
         accent: "#F89C1F",
-        white: "#FFFFFF"
+        white: "#FFFFFF",
+        grey: "#BDC6CB"
       },
     container: {
       'max-width': '1200px',

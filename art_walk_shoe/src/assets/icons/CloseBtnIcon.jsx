@@ -1,6 +1,7 @@
-const CloseBtnIcon = () => {
+const CloseBtnIcon = ({ className, onClick }) => {
   return (
-    <svg
+    <svg onClick={onClick}
+      className={className}
       width="24"
       height="24"
       viewBox="0 0 24 24"

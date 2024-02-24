@@ -1,8 +1,6 @@
 
 
 const Button = ({label, onClick, isAdded }) => {
-  console.log(isAdded);
-
   return (
     <button
       onClick={onClick}

@@ -1,7 +1,7 @@
 import { Card } from "../components";
 
 
-const Catalog = ({items}) => {
+const Catalog = ({items, onBuy, searchValue}) => {
   
 
   return (
@@ -15,16 +15,21 @@ const Catalog = ({items}) => {
           sneakers
         </h1>
         <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 gap-y-8 w-full">
-          {items.map((item) => (
-            <li key={item.id}>
-              <Card
-                title={item.title}
-                price={item.price}
-                photoUrl={item.photoUrl}
-                onClickBuy={() => console.log(item)}
-              />
-            </li>
-          ))}
+          {items
+            .filter((item) =>
+              item.title.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((item) => (
+              <li key={item.id}>
+                <Card
+                  id={item.id}
+                  title={item.title}
+                  price={item.price}
+                  imgUrl={item.imgUrl}
+                  onBuy={onBuy}
+                />
+              </li>
+            ))}
         </ul>
       </div>
     </section>

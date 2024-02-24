@@ -1,35 +1,43 @@
-import { CartIcon } from "../assets/icons";
+import { Remove } from "../assets/icons";
 import { Btn, CloseBtn } from "./index";
 
-const Cart = () => {
+const Cart = ({ onClickClose, items = [], onClickRemove }) => {
+
+  
+
   return (
     <div className="backdrop fixed left-0 top-0 z-[999] w-screen h-screen backdrop-blur-xl bg-dark/70 ">
-      <div className="relative py-8 px-5 bg-light max-w-[400px] w-full rounded-[20px] ml-auto h-full flex flex-col justify-between">
+      <div className="relative py-8 px-6 bg-light max-w-[400px] w-full rounded-[20px] ml-auto h-full flex flex-col justify-between font-lucky">
         <div className="w-full flex-1 flex flex-col justify-between">
           <h2 className=" text-[32px] mb-3">Your cart</h2>
           <div className="flex flex-col h-full justify-between">
             <ul>
-              <li className="flex gap-3 items-stretch py-5  ">
-                <div className="shrink-0 overflow-hidden rounded-xl border border-primary border-solid ">
-                  <img
-                    className="h-full object-cover"
-                    src="/images/sneakers/2.jpg"
-                    alt=""
-                    width={80}
-                    height={106}
-                  />
-                </div>
-                <div className="flex flex-col justify-between py-2">
-                  <div className="flex gap-5 justify-between">
-                    <p>White sneakers with flowers</p>
-                    <Btn Icon={CartIcon} />
+              {items.map((item) => (
+                <li
+                  key={item.id}
+                  className="flex justify-between gap-3 items-stretch py-5"
+                >
+                  <div className="shrink-0 overflow-hidden rounded-xl border border-primary border-solid ">
+                    <img
+                      className="h-full object-cover"
+                      src={item.imgUrl}
+                      alt={item.title}
+                      width={80}
+                      height={106}
+                    />
                   </div>
-                  <div className="text-accent text-3xl">
-                    <span>$</span>
-                    <span>4343</span>
+                  <div className="flex flex-col justify-between py-2 w-full">
+                    <div className="flex gap-5 justify-between">
+                      <p>{item.title}</p>
+                      <Btn Icon={Remove} onClick={onClickRemove} />
+                    </div>
+                    <div className="text-accent text-3xl">
+                      <span>$</span>
+                      <span>{item.price}</span>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
             <div className="flex flex-col items-center ">
               <div className="flex justify-between text-2xl w-full mb-2">
@@ -46,12 +54,10 @@ const Cart = () => {
           </div>
         </div>
 
-        <div className="absolute top-4 right-4">
-          <CloseBtn />
-        </div>
+        <CloseBtn onClick={onClickClose} className="absolute top-4 right-4" />
       </div>
     </div>
   );
-}
+};
 
 export default Cart
