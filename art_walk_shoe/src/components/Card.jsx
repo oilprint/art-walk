@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Button, Btn } from "./index";
 import { Favorite  } from "../assets/icons";
 
-const Card = ({ title, imgUrl, price, onBuy, id }) => {
+const Card = ({ title, imgUrl, price, onBuy, id, favorited = false}) => {
   const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(favorited)
 
   const onClickBuyNow = () => {
     onBuy({title, imgUrl, price, id});
@@ -14,7 +15,7 @@ const Card = ({ title, imgUrl, price, onBuy, id }) => {
   
 
   return (
-    <article className="fkex flex-col max-w-[280px] w-full" id={id}>
+    <article className="flex flex-col max-w-[280px] w-full h-full" id={id}>
       <div className="relative">
         <div className="overflow-hidden rounded-[40px] border  border-primary border-solid w-full mb-2 aspect-[2/3]">
           <img
@@ -30,7 +31,7 @@ const Card = ({ title, imgUrl, price, onBuy, id }) => {
         </div>
       </div>
 
-      <div>
+      <div className="flex flex-col justify-between grow">
         <h3 className="font-lucky text-xl text-primary ">{title}</h3>
         <div className="flex justify-between flex-wrap">
           <div className="mr-6 mb-1 font-lucky text-[32px] text-accent ">
@@ -41,7 +42,7 @@ const Card = ({ title, imgUrl, price, onBuy, id }) => {
             <Button label="Buy now" onClick={onClickBuyNow} isAdded={isAdded} />
           </div>
         </div>
-      </div>
+      </div> 
     </article>
   );
 };

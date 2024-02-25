@@ -5,6 +5,7 @@ import CloseBtnIcon from "./CloseBtnIcon";
 import Remove from "./Remove";
 import SearchIcon from "./SearchIcon";
 
+
 export {
   logo,
   Favorite,

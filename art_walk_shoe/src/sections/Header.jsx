@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import {
   logo,
   CartIcon,
@@ -5,7 +6,7 @@ import {
   SearchIcon,
   CloseBtnIcon,
 } from "../assets/icons";
-import { Btn, CloseBtn } from "../components";
+import { Btn } from "../components";
 
 
 const Header = ({ searchValue, onClickCart, onSearch, onSearchClear }) => {
@@ -30,11 +31,14 @@ const Header = ({ searchValue, onClickCart, onSearch, onSearchClear }) => {
         />
       </div>
 
-      <a href="#">
+      <Link to="/">
         <img src={logo} alt="logo ArtWalk Shoe Co." width={304} height={36} />
-      </a>
+      </Link>
+      
       <div className="flex justify-end gap-5">
-        <Btn Icon={Favorite} />
+        <NavLink to="favorite" className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light">
+          <Favorite /> 
+        </NavLink>
         <button
           onClick={onClickCart}
           type="button"
