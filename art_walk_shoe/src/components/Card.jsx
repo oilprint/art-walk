@@ -17,13 +17,13 @@ const Card = ({ title, imgUrl, price, onBuy, id, favorited = false}) => {
   return (
     <article className="flex flex-col max-w-[280px] w-full h-full" id={id}>
       <div className="relative">
-        <div className="overflow-hidden rounded-[40px] border  border-primary border-solid w-full mb-2 aspect-[2/3]">
+        <div className="overflow-hidden rounded-[40px] border  border-primary border-solid w-full mb-2 aspect-[3/4]">
           <img
             className="object-cover h-full"
             src={imgUrl}
             alt={title}
             width="280"
-            height="370"
+            height="320"
           />
         </div>
         <div className="absolute top-3 right-3">

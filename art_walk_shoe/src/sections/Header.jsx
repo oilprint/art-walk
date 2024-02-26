@@ -1,15 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
-import {
-  logo,
-  CartIcon,
-  Favorite,
-  SearchIcon,
-  CloseBtnIcon,
-} from "../assets/icons";
-import { Btn } from "../components";
+import { useContext } from "react";
+import { ItemsContext } from "../contexts/items";
+import { logo, CartIcon, Favorite, SearchIcon, CloseBtnIcon, } from "../assets/icons";
+import { Cart } from "../components";
 
 
-const Header = ({ searchValue, onClickCart, onSearch, onSearchClear }) => {
+const Header = ({ onClickCart }) => {
+  const { searchValue } = useContext(ItemsContext);
+  const { cartOpen } = useContext(ItemsContext);
+  const { itemsAction } = useContext(ItemsContext);
+
   return (
     <header className="container flex-1 flex justify-between py-10 rounded-[10px] border-2 border-dark">
       <div className="relative text-grey ">
@@ -17,13 +17,13 @@ const Header = ({ searchValue, onClickCart, onSearch, onSearchClear }) => {
 
         {searchValue && (
           <CloseBtnIcon
-            onClick={onSearchClear}
+            onClick={itemsAction.onSearchClear}
             className="absolute top-2 right-2 cursor-pointer"
           />
         )}
 
         <input
-          onChange={onSearch}
+          onChange={itemsAction.onChangeSearchInput}
           value={searchValue}
           type="text"
           placeholder="Search..."
@@ -34,13 +34,16 @@ const Header = ({ searchValue, onClickCart, onSearch, onSearchClear }) => {
       <Link to="/">
         <img src={logo} alt="logo ArtWalk Shoe Co." width={304} height={36} />
       </Link>
-      
+
       <div className="flex justify-end gap-5">
-        <NavLink to="favorite" className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light">
-          <Favorite /> 
+        <NavLink
+          to="favorite"
+          className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light"
+        >
+          <Favorite />
         </NavLink>
         <button
-          onClick={onClickCart}
+          onClick={itemsAction.onClickOpenCart}
           type="button"
           className="flex flex-1 flex-center items-center text-primary border rounded-full border-primary h-10 w-auto px-3 py-2.5 bg-light cursor-pointer"
         >
@@ -51,6 +54,10 @@ const Header = ({ searchValue, onClickCart, onSearch, onSearchClear }) => {
           <CartIcon />
         </button>
       </div>
+
+      {cartOpen && (
+        <Cart/>
+      )}
     </header>
   );
 };

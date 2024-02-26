@@ -48,8 +48,6 @@ function App() {
       )}
       <Header
         onClickCart={() => setCartOpen(true)}
-        onSearch={onChangeSearchInput}
-        searchValue={searchValue}
         onSearchClear={() => setSearchValue("")}
       />
 

@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import AppContext from "../context";
+import { ItemsContext } from "../contexts/items";
 import { Remove } from "../assets/icons";
 import { Btn, CloseBtn } from "./index";
 
-const Cart = ({ onClickClose, onRemoveItem }) => {
-  const { cartItems } = useContext(AppContext);
+const Cart = () => {
+  const { cartItems } = useContext(ItemsContext);
+  const { cartOpen } = useContext(ItemsContext);
+  const { itemsAction } = useContext(ItemsContext);
+  
 
   return (
     <div className="backdrop fixed left-0 top-0 z-[999] w-screen h-screen backdrop-blur-xl bg-dark/70 ">
@@ -33,7 +36,7 @@ const Cart = ({ onClickClose, onRemoveItem }) => {
                         <p>{item.title}</p>
                         <Btn
                           Icon={Remove}
-                          onClick={() => onRemoveItem(item.id)}
+                          onClick={() => itemsAction.onRemoveItem(item.id)}
                         />
                       </div>
                       <div className="text-accent text-3xl">
@@ -62,7 +65,7 @@ const Cart = ({ onClickClose, onRemoveItem }) => {
               <Remove width="60px" height="60px" />
               <p className="mb-10 mt-1">Your cart is empty</p>
               <button
-                onClick={onClickClose}
+                onClick={itemsAction.onClickCloseCart}
                 className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-primary border-primary border-solid hover:bg-light transition ease-in-out duration-300 "
               >
                 Go back
@@ -116,7 +119,10 @@ const Cart = ({ onClickClose, onRemoveItem }) => {
           </div> */}
         </div>
 
-        <CloseBtn onClick={onClickClose} className="absolute top-4 right-4" />
+        <CloseBtn
+          onClick={itemsAction.onClickCloseCart}
+          className="absolute top-4 right-4"
+        />
       </div>
     </div>
   );
