@@ -5,7 +5,6 @@ import { Btn, CloseBtn } from "./index";
 
 const Cart = () => {
   const { cartItems } = useContext(ItemsContext);
-  const { cartOpen } = useContext(ItemsContext);
   const { itemsAction } = useContext(ItemsContext);
   
 

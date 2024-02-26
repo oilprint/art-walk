@@ -4,24 +4,34 @@ import axios from "axios";
 
 export const ItemsProvider = ({ children}) => {
   const [items, setItems] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState( JSON.parse(localStorage.getItem('cartItems')) || []);
   const [searchValue, setSearchValue] = useState('');
   const [cartOpen, setCartOpen] = useState(false);
+  const [favoriteItems, setFavoriteItems] = useState([]);
+
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))}, [cartItems]);
 
   useEffect(() => {
     axios
       .get("https://65d74b6527d9a3bc1d7aa870.mockapi.io/items")
       .then((res) => setItems(res.data));
     axios
-      .get("https://65d74b6527d9a3bc1d7aa870.mockapi.io/cart")
-      .then((res) => setCartItems(res.data));
+      .get("https://65d74b6527d9a3bc1d7aa870.mockapi.io/favorite")
+      .then((res) => setFavoriteItems(res.data));
   }, []);
 
 
   const itemsAction = {
     addItemsToCart: (item) => {
-      axios.post("https://65d74b6527d9a3bc1d7aa870.mockapi.io/cart", item);
-      setCartItems([...cartItems, item]);
+      // axios.post("https://65d74b6527d9a3bc1d7aa870.mockapi.io/cart", item);
+      setCartItems((prev) => [...prev, item]);
+    },
+
+    onAddToFavorite: (obj) => {
+      axios.post("https://65d74b6527d9a3bc1d7aa870.mockapi.io/favorite", obj);
+      setFavoriteItems((prev) => [...prev, obj])
     },
 
     onChangeSearchInput: (event) => {
@@ -51,7 +61,9 @@ export const ItemsProvider = ({ children}) => {
         cartItems,
         searchValue,
         cartOpen,
-        setCartOpen, itemsAction,
+        favoriteItems,
+        setCartOpen,
+        itemsAction,
       }}
     >
       {children}

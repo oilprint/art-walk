@@ -2,8 +2,10 @@ import React from 'react'
 
 const Favorite = () => {
   return (
-    <div>Favorite</div>
-  )
+    <section>
+      <div className="container">Favorite</div>
+    </section>
+  );
 }
 
 export default Favorite

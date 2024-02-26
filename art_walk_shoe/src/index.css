@@ -83,9 +83,6 @@ h6 {
   font: inherit;
 }
 
-address {
-  font-style: normal;
-}
 
 body{
   @apply bg-light  font-inter text-primary

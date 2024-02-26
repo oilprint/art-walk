@@ -25,20 +25,21 @@ const Catalog = () => {
         </h1>
         <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 gap-y-8 w-full">
           {items
-          .filter((item) =>
+            .filter((item) =>
               item.title.toLowerCase().includes(searchValue.toLowerCase())
             )
-          .map((item) => (
-            <li key={item.id}>
-              <Card
-                title={item.title}
-                id={item.id}
-                imgUrl={item.imgUrl}
-                price={item.price}
-                onBuy={(item) => itemsAction.addItemsToCart(item)}
-              />
-            </li>
-          ))}
+            .map((item) => (
+              <li key={item.id}>
+                <Card
+                  title={item.title}
+                  id={item.id}
+                  imgUrl={item.imgUrl}
+                  price={item.price}
+                  onBuy={(item) => itemsAction.addItemsToCart(item)}
+                  onFavorite={(obj) => itemsAction.onAddToFavorite(obj)}
+                />
+              </li>
+            ))}
         </ul>
       </div>
     </section>
