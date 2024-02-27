@@ -2,16 +2,49 @@ import { useContext } from "react";
 import { ItemsContext } from "../contexts/items";
 
 import { Card } from "../components";
-import { useLoaderData } from "react-router-dom";
 
 
 const Catalog = () => {
   const { items } = useContext(ItemsContext);
+  const { cartItems } = useContext(ItemsContext);
+  const { favoriteItems } = useContext(ItemsContext);
   const { searchValue } = useContext(ItemsContext);
   const {itemsAction} = useContext(ItemsContext);
+  const { isLoading } = useContext(ItemsContext);
 
-  console.log(itemsAction);
-  // const searchValue = useContext(AppContext);
+  const renderItems =() => {
+    const  filtredItems = items
+      .filter((item) =>
+        item.title.toLowerCase().includes(searchValue.toLowerCase()),
+      );
+
+    const skeletonArr = [...Array(10)].map((item, index) => (
+      <li key={index}>
+        <Card isLoading={isLoading} />
+      </li>
+    ));  
+
+
+    return isLoading ? skeletonArr : filtredItems.map((item) => (
+      <li key={item.id}>
+        <Card
+          title={item.title}
+          id={item.id}
+          imgUrl={item.imgUrl}
+          price={item.price}
+          onBuy={(item) => itemsAction.addItemsToCart(item)}
+          onFavorite={(obj) => itemsAction.onAddToFavorite(obj)}
+          added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
+          favorited={favoriteItems.some(
+            (obj) => Number(obj.id) === Number(item.id)
+          )}
+          isLoading={isLoading}
+        />
+      </li>
+    ));
+    
+  }
+
 
   return (
     <section className="relative">
@@ -24,22 +57,7 @@ const Catalog = () => {
           sneakers
         </h1>
         <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 gap-y-8 w-full">
-          {items
-            .filter((item) =>
-              item.title.toLowerCase().includes(searchValue.toLowerCase())
-            )
-            .map((item) => (
-              <li key={item.id}>
-                <Card
-                  title={item.title}
-                  id={item.id}
-                  imgUrl={item.imgUrl}
-                  price={item.price}
-                  onBuy={(item) => itemsAction.addItemsToCart(item)}
-                  onFavorite={(obj) => itemsAction.onAddToFavorite(obj)}
-                />
-              </li>
-            ))}
+          {renderItems()}
         </ul>
       </div>
     </section>

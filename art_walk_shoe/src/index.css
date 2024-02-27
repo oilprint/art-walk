@@ -88,9 +88,7 @@ body{
   @apply bg-light  font-inter text-primary
 }
 
-.btn-active {
-  @apply bg-accent text-dark
-}
+
 
 .text-stroke {
   -webkit-text-stroke: 2px var(--dark);
