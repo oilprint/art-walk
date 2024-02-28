@@ -7,6 +7,8 @@ const Favorite = () => {
   const { searchValue } = useContext(ItemsContext);
   const { itemsAction } = useContext(ItemsContext);
 
+  console.log(favoriteItems);
+
   return (
     <section>
       <div className="container">

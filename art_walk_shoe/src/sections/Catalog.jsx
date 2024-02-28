@@ -5,12 +5,9 @@ import { Card } from "../components";
 
 
 const Catalog = () => {
-  const { items } = useContext(ItemsContext);
-  const { cartItems } = useContext(ItemsContext);
-  const { favoriteItems } = useContext(ItemsContext);
-  const { searchValue } = useContext(ItemsContext);
-  const {itemsAction} = useContext(ItemsContext);
-  const { isLoading } = useContext(ItemsContext);
+  const { items, favoriteItems, searchValue, itemsAction, isLoading } =
+    useContext(ItemsContext);
+
 
   const renderItems =() => {
     const  filtredItems = items
@@ -25,23 +22,24 @@ const Catalog = () => {
     ));  
 
 
-    return isLoading ? skeletonArr : filtredItems.map((item) => (
-      <li key={item.id}>
-        <Card
-          title={item.title}
-          id={item.id}
-          imgUrl={item.imgUrl}
-          price={item.price}
-          onBuy={(item) => itemsAction.addItemsToCart(item)}
-          onFavorite={(obj) => itemsAction.onAddToFavorite(obj)}
-          added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
-          favorited={favoriteItems.some(
-            (obj) => Number(obj.id) === Number(item.id)
-          )}
-          isLoading={isLoading}
-        />
-      </li>
-    ));
+    return isLoading
+      ? skeletonArr
+      : filtredItems.map((item) => (
+          <li key={item.id}>
+            <Card
+              title={item.title}
+              id={item.id}
+              imgUrl={item.imgUrl}
+              price={item.price}
+              onBuy={(item) => itemsAction.addItemsToCart(item)}
+              onFavorite={(obj) => itemsAction.onAddToFavorite(obj)}
+              favorited={favoriteItems.some(
+                (obj) => Number(obj.id) === Number(item.id)
+              )}
+              isLoading={isLoading}
+            />
+          </li>
+        ));
     
   }
 

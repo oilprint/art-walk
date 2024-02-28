@@ -10,6 +10,10 @@ export const ItemsProvider = ({ children}) => {
   const [cartOpen, setCartOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const isItemAdded = (id) => { return cartItems.some((obj) => Number(obj.id) === Number(id))};
+  
+
+
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems))}, [cartItems]);
@@ -39,25 +43,28 @@ export const ItemsProvider = ({ children}) => {
          setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
          
        } else {
-         setCartItems((prev) => [...prev, obj]);
-         
+         setCartItems((prev) => [...prev, obj]);      
        }
-      // axios.post("https://65d74b6527d9a3bc1d7aa870.mockapi.io/cart", item);
       
     },
 
-    onAddToFavorite: (obj) => {
-      console.log(obj);
-      if (favoriteItems.find((favObj) => Number(favObj.id) === Number(obj.id))) {
+    onAddToFavorite: async(obj) => {
+      console.log();
+      try{ 
+        if (favoriteItems.find((favObj) => Number(favObj.id) === Number(obj.id))) {
         axios.delete(
-          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/favorite/${Number(obj.id)}`
+          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/favorite/${obj.id}`   
         );
+        console.log(obj.id);
         // setFavoriteItems((prev) =>
         //   prev.filter((item) => Number(item.id) !== Number(obj.id))
         // );
-      } else {
-        axios.post("https://65d74b6527d9a3bc1d7aa870.mockapi.io/favorite", obj);
-        setFavoriteItems((prev) => [...prev, obj]);
+        } else {
+          const {data} = await axios.post("https://65d74b6527d9a3bc1d7aa870.mockapi.io/favorite", obj);
+          setFavoriteItems((prev) => [...prev, data]);
+        }   
+      } catch (error) {
+        alert('Failed to add to favorites')
       }
         
     },
@@ -74,10 +81,12 @@ export const ItemsProvider = ({ children}) => {
 
     onClickCloseCart: () => setCartOpen(false),
 
+    // isItemAdded: (id) => { cartItems.some((obj) => Number(obj.id) === Number(id))},
+
     onRemoveItem: (id) => {
-    axios.delete(`https://65d74b6527d9a3bc1d7aa870.mockapi.io/cart/${id}`);
+    
     setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)))
-  }
+    }
 
   };
 
@@ -92,7 +101,8 @@ export const ItemsProvider = ({ children}) => {
         favoriteItems,
         setCartOpen,
         itemsAction,
-        isLoading
+        isLoading,
+        isItemAdded,
       }}
     >
       {children}
