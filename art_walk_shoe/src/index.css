@@ -7,6 +7,7 @@
 
 :root {
   --dark: #040402;
+  --primary: #296A89;
 }
 
 
@@ -91,8 +92,8 @@ body{
 
 
 .text-stroke {
-  -webkit-text-stroke: 2px var(--dark);
-  text-stroke: 2px  var(--dark);
+  -webkit-text-stroke: 2px var(--primary);
+  text-stroke: 2px  var(--primary);
 }
 
 .bc-accent {

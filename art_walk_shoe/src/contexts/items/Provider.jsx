@@ -12,11 +12,17 @@ export const ItemsProvider = ({ children}) => {
   const [searchValue, setSearchValue] = useState('');
   const [cartOpen, setCartOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [total, setTotal] = useState();
+ 
 
   const isItemAdded = (id) => { return cartItems.some((obj) => Number(obj.id) === Number(id))};
   const isFavorited = (id) => {
     return favoritedItems.some((obj) => Number(obj.id) === Number(id));
   };
+  
+   useEffect(() => {
+     setTotal(cartItems.reduce((acc, curr) => acc + Number(curr.price), 0));
+   }, [cartItems]);
   
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -99,6 +105,7 @@ export const ItemsProvider = ({ children}) => {
         isLoading,
         isItemAdded,
         isFavorited,
+        total,
       }}
     >
       {children}

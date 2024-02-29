@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ItemsContext } from "../contexts/items";
-import { Remove } from "../assets/icons";
+import { Remove, emptyBox } from "../assets/icons";
 import { Btn, CloseBtn } from "./index";
+import  Info  from "./Info";
 
 const Cart = () => {
+
   const { cartItems } = useContext(ItemsContext);
+  const { total } = useContext(ItemsContext);
   const { itemsAction } = useContext(ItemsContext);
+
+  
   
 
   return (
@@ -51,7 +56,7 @@ const Cart = () => {
                   <p>Subtotal: </p>
                   <div>
                     <span>$</span>
-                    <span>158</span>
+                    <span>{total}</span>
                   </div>
                 </div>
                 <button className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-primary border-primary border-solid hover:bg-light transition ease-in-out duration-300 ">
@@ -60,16 +65,13 @@ const Cart = () => {
               </div>
             </div>
           ) : (
-            <div className="grow flex flex-col justify-center items-center ">
-              <Remove width="60px" height="60px" />
-              <p className="mb-10 mt-1">Your cart is empty</p>
-              <button
-                onClick={itemsAction.onClickCloseCart}
-                className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-primary border-primary border-solid hover:bg-light transition ease-in-out duration-300 "
-              >
-                Go back
-              </button>
-            </div>
+            <Info
+            
+              imageUrl={emptyBox}
+              title="Your cart is empty"
+              description="No items have been added to cart"
+              onClick={() => itemsAction.onClickCloseCart()}
+            />
           )}
           {/* <div className="flex flex-col h-full justify-between">
             <ul className="overflow-auto max-h-[70vh] ">

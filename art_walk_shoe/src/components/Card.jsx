@@ -18,13 +18,9 @@ const Card = ({
   isLoading ,
   onFavorite,
 }) => {
-  
-  // const [isFavorite, setIsFavorite] = useState(favorited);
-  // const { itemsAction } = useContext(ItemsContext);
+
   const { isItemAdded } = useContext(ItemsContext);
   const { isFavorited } = useContext(ItemsContext);
-
-
 
   const onClickBuyNow = () => {
     onBuy({ title, imgUrl, price, id });
@@ -37,9 +33,10 @@ const Card = ({
   };
 
   return (
-    <>
+    <article className="flex flex-col max-w-[280px] w-full h-full" id={id}>
       {isLoading ? (
         <ContentLoader
+          className="w-auto h-auto"
           speed={2}
           width={280}
           height={455}
@@ -53,7 +50,7 @@ const Card = ({
           <rect x="165" y="390" rx="20" ry="20" width="116" height="30" />
         </ContentLoader>
       ) : (
-        <article className="flex flex-col max-w-[280px] w-full h-full" id={id}>
+        <>
           <div className="relative">
             <div className="overflow-hidden rounded-[40px] border  border-primary border-solid w-full mb-2 aspect-[3/4]">
               <img
@@ -73,8 +70,8 @@ const Card = ({
             </div>
           </div>
 
-          <div className="flex flex-col justify-between grow">
-            <h3 className="text-lg font-[700] leading-[1]text-primary mb-2">
+          <div className="flex flex-col justify-between grow px-2">
+            <h3 className="text-lg font-[700] leading-[1] text-primary mb-2 ">
               {title}
             </h3>
             <div className="flex justify-between flex-wrap">
@@ -95,10 +92,9 @@ const Card = ({
               {/* // <Button label="Buy now" onClick={onClickBuyNow} isAdded={isAdded} /> */}
             </div>
           </div>
-        </article>
+        </>
       )}
-    </>
-  );
-};
+    </article>
+  );}
 
 export default Card

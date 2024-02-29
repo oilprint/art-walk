@@ -9,6 +9,8 @@ const Header = ({ onClickCart }) => {
   const { searchValue } = useContext(ItemsContext);
   const { cartOpen } = useContext(ItemsContext);
   const { itemsAction } = useContext(ItemsContext);
+  const { total } = useContext(ItemsContext);
+  const { cartItems } = useContext(ItemsContext);
 
   return (
     <header className="container flex-1 flex justify-between py-10 rounded-[10px] border-2 border-dark">
@@ -45,19 +47,23 @@ const Header = ({ onClickCart }) => {
         <button
           onClick={itemsAction.onClickOpenCart}
           type="button"
-          className="flex flex-1 flex-center items-center text-primary border rounded-full border-primary h-10 w-auto px-3 py-2.5 bg-light cursor-pointer"
+          className="relative flex flex-1 flex-center items-center text-primary border rounded-full border-primary h-10 w-auto px-3 py-2.5 bg-light cursor-pointer"
         >
-          <div className="font-lucky text-dark text-xl ">
-            <span>125</span>
-            <span>$</span>
-          </div>
+          {cartItems.length > 0 ? (
+            <div className="font-lucky text-dark text-xl ">
+              <span>{total}</span>
+              <span>$</span>
+            </div>
+          ) : (
+            ""
+          )}
+
           <CartIcon />
+        
         </button>
       </div>
 
-      {cartOpen && (
-        <Cart/>
-      )}
+      {cartOpen && <Cart />}
     </header>
   );
 };

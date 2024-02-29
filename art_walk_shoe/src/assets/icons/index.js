@@ -1,4 +1,6 @@
 import logo from "./logo.svg";
+import emptyBox from "./emptyBox.svg";
+import emptyList from "./emptyList.svg";
 import Favorite from "./Favorite";
 import CartIcon from "./CartIcon";
 import CloseBtnIcon from "./CloseBtnIcon";
@@ -12,5 +14,7 @@ export {
   CartIcon,
   CloseBtnIcon, 
   Remove,
-  SearchIcon
+  SearchIcon,
+  emptyBox,
+  emptyList
 }

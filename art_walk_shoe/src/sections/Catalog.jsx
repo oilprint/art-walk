@@ -5,7 +5,7 @@ import { Card } from "../components";
 
 
 const Catalog = () => {
-  const { items, favoriteItems, searchValue, itemsAction, isLoading } =
+  const { items, searchValue, itemsAction, isLoading } =
     useContext(ItemsContext);
 
 
@@ -20,8 +20,6 @@ const Catalog = () => {
         <Card isLoading={isLoading} />
       </li>
     ));  
-
-
     return isLoading
       ? skeletonArr
       : filtredItems.map((item) => (
