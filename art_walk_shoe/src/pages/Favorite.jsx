@@ -3,11 +3,11 @@ import { ItemsContext } from "../contexts/items";
 import { Card } from "../components";
 
 const Favorite = () => {
-  const { favoriteItems } = useContext(ItemsContext);
+  const { favoritedItems } = useContext(ItemsContext);
   const { searchValue } = useContext(ItemsContext);
   const { itemsAction } = useContext(ItemsContext);
 
-  console.log(favoriteItems);
+  console.log(favoritedItems);
 
   return (
     <section>
@@ -19,7 +19,7 @@ const Favorite = () => {
           favorite
         </h1>
         <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 gap-y-8 w-full">
-          {favoriteItems
+          {favoritedItems
             .filter((item) =>
               item.title.toLowerCase().includes(searchValue.toLowerCase())
             )

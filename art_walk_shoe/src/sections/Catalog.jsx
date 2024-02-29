@@ -33,9 +33,6 @@ const Catalog = () => {
               price={item.price}
               onBuy={(item) => itemsAction.addItemsToCart(item)}
               onFavorite={(obj) => itemsAction.onAddToFavorite(obj)}
-              favorited={favoriteItems.some(
-                (obj) => Number(obj.id) === Number(item.id)
-              )}
               isLoading={isLoading}
             />
           </li>

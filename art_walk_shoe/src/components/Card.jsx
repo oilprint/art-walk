@@ -19,20 +19,21 @@ const Card = ({
   onFavorite,
 }) => {
   
-  const [isFavorite, setIsFavorite] = useState(favorited);
+  // const [isFavorite, setIsFavorite] = useState(favorited);
   // const { itemsAction } = useContext(ItemsContext);
   const { isItemAdded } = useContext(ItemsContext);
+  const { isFavorited } = useContext(ItemsContext);
 
 
 
   const onClickBuyNow = () => {
     onBuy({ title, imgUrl, price, id });
-  
+
   };
 
   const onClickFavorite = () => {
     onFavorite({ title, imgUrl, price, id });
-    setIsFavorite(!isFavorite);
+    // setIsFavorite(!isFavorite);
   };
 
   return (
@@ -64,8 +65,8 @@ const Card = ({
               />
             </div>
             <div onClick={onClickFavorite} className="absolute top-3 right-3">
-              {isFavorite ? (
-                <Btn Icon={Favorite} isFavorite />
+              {isFavorited(id) ? (
+                <Btn Icon={Favorite} isFavorite={isFavorited(id)} />
               ) : (
                 <Btn Icon={Favorite} />
               )}
