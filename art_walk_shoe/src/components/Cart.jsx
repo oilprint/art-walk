@@ -1,17 +1,18 @@
-import { useContext, useState, useEffect } from "react";
-import { ItemsContext } from "../contexts/items";
-import { Remove, emptyBox } from "../assets/icons";
-import { Btn, CloseBtn } from "./index";
-import  Info  from "./Info";
+import { useContext, useState } from 'react';
+import { ItemsContext } from '../contexts/items';
+import { Remove, emptyBox, completed } from '../assets/icons';
+import { Btn, CloseBtn } from './index';
+import Info from './Info';
 
 const Cart = () => {
+  const [isOrderCompete, setIsOrderCompete] = useState(false);
 
-  const { cartItems } = useContext(ItemsContext);
-  const { total } = useContext(ItemsContext);
-  const { itemsAction } = useContext(ItemsContext);
+  const { cartItems, setCartItems, total, itemsAction } = useContext(ItemsContext);
 
-  
-  
+  const onClickOrder = () => {
+    setIsOrderCompete(true);
+    setCartItems([]);
+  };
 
   return (
     <div className="backdrop fixed left-0 top-0 z-[999] w-screen h-screen backdrop-blur-xl bg-dark/70 ">
@@ -22,10 +23,7 @@ const Cart = () => {
             <div className="flex flex-col h-full justify-between">
               <ul className="overflow-auto max-h-[70vh] ">
                 {cartItems.map((item) => (
-                  <li
-                    key={item.id}
-                    className="flex justify-between gap-3 items-stretch py-5"
-                  >
+                  <li key={item.id} className="flex justify-between gap-3 items-stretch py-5">
                     <div className="shrink-0 overflow-hidden rounded-xl border border-primary border-solid ">
                       <img
                         className="h-full object-cover"
@@ -38,10 +36,7 @@ const Cart = () => {
                     <div className="flex flex-col justify-between py-2 w-full">
                       <div className="flex gap-5 justify-between">
                         <p>{item.title}</p>
-                        <Btn
-                          Icon={Remove}
-                          onClick={() => itemsAction.onRemoveItem(item.id)}
-                        />
+                        <Btn Icon={Remove} onClick={() => itemsAction.onRemoveItem(item.id)} />
                       </div>
                       <div className="text-accent text-3xl">
                         <span>$</span>
@@ -59,17 +54,21 @@ const Cart = () => {
                     <span>{total}</span>
                   </div>
                 </div>
-                <button className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-primary border-primary border-solid hover:bg-light transition ease-in-out duration-300 ">
+                <button
+                  onClick={onClickOrder}
+                  type="button"
+                  className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-primary border-primary border-solid hover:bg-light transition ease-in-out duration-300 ">
                   Checkout
                 </button>
               </div>
             </div>
           ) : (
             <Info
-            
-              imageUrl={emptyBox}
-              title="Your cart is empty"
-              description="No items have been added to cart"
+              imageUrl={isOrderCompete ? { completed } : { emptyBox }}
+              title={isOrderCompete ? 'Thanks for your payment!' : 'Your cart is empty'}
+              description={
+                isOrderCompete ? "We've got your order" : 'No items have been added to cart'
+              }
               onClick={() => itemsAction.onClickCloseCart()}
             />
           )}
@@ -120,10 +119,7 @@ const Cart = () => {
           </div> */}
         </div>
 
-        <CloseBtn
-          onClick={itemsAction.onClickCloseCart}
-          className="absolute top-4 right-4"
-        />
+        <CloseBtn onClick={itemsAction.onClickCloseCart} className="absolute top-4 right-4" />
       </div>
     </div>
   );

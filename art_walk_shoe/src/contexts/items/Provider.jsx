@@ -30,20 +30,22 @@ export const ItemsProvider = ({ children}) => {
   }, [cartItems]);
 
   useEffect(() => {
-    
     localStorage.setItem("favoritedItems", JSON.stringify(favoritedItems));
   }, [favoritedItems]);
 
   useEffect(() => {
     async function fetchData() {
-      const itemsResponse = await axios.get(
+      try {
+        const itemsResponse = await axios.get(
         "https://65d74b6527d9a3bc1d7aa870.mockapi.io/items"
       );
       setIsLoading(false);
-
       setItems(itemsResponse.data);
+      } catch (error) {
+        alert("Error loading data");
+        console.error();
+      }    
     }
-
     fetchData();
   }, []);
 
@@ -106,6 +108,7 @@ export const ItemsProvider = ({ children}) => {
         isItemAdded,
         isFavorited,
         total,
+        setCartItems,
       }}
     >
       {children}
