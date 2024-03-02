@@ -4,6 +4,7 @@ import Btn from "./Btn";
 import Cart from "./Cart";
 import CloseBtn from "./CloseBtn";
 import Info from "./Info";
+import Pagination from "./Pagination";
 
 export {
   Button,
@@ -11,5 +12,6 @@ export {
   Btn,
   Cart, 
   CloseBtn,
-  Info
+  Info,
+  Pagination
 }

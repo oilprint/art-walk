@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { ItemsContext } from "../contexts/items";
-import { Card, Info } from "../components";
-import { emptyList } from "../assets/icons";
+import { useContext } from 'react';
+import { ItemsContext } from '../contexts/items';
+import { Card, Info } from '../components';
+import { emptyList } from '../assets/icons';
 
 const Favorite = () => {
   const { favoritedItems } = useContext(ItemsContext);
@@ -9,7 +9,7 @@ const Favorite = () => {
   const { itemsAction } = useContext(ItemsContext);
 
   console.log(favoritedItems);
- console.log(favoritedItems.length);
+  console.log(favoritedItems.length);
 
   return (
     <section>
@@ -23,9 +23,7 @@ const Favorite = () => {
         {favoritedItems.length > 0 ? (
           <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 gap-y-8 w-full">
             {favoritedItems
-              .filter((item) =>
-                item.title.toLowerCase().includes(searchValue.toLowerCase())
-              )
+              .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
               .map((item) => (
                 <li key={item.id}>
                   <Card
@@ -42,7 +40,7 @@ const Favorite = () => {
           </ul>
         ) : (
           <Info
-           href=''
+            href="/"
             imageUrl={emptyList}
             title="Your favorites list is empty"
             description="No items have been added to favorites"

@@ -64,7 +64,7 @@ const Cart = () => {
             </div>
           ) : (
             <Info
-              imageUrl={isOrderCompete ? { completed } : { emptyBox }}
+              imageUrl={isOrderCompete ? `${completed}` : `${emptyBox}`}
               title={isOrderCompete ? 'Thanks for your payment!' : 'Your cart is empty'}
               description={
                 isOrderCompete ? "We've got your order" : 'No items have been added to cart'

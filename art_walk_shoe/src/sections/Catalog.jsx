@@ -1,25 +1,21 @@
-import { useContext } from "react";
-import { ItemsContext } from "../contexts/items";
+import { useContext } from 'react';
+import { ItemsContext } from '../contexts/items';
 
-import { Card } from "../components";
-
+import { Card, Pagination } from '../components';
 
 const Catalog = () => {
-  const { items, searchValue, itemsAction, isLoading } =
-    useContext(ItemsContext);
+  const { items, searchValue, itemsAction, isLoading, setCurrentPage } = useContext(ItemsContext);
 
-
-  const renderItems =() => {
-    const  filtredItems = items
-      .filter((item) =>
-        item.title.toLowerCase().includes(searchValue.toLowerCase()),
-      );
+  const renderItems = () => {
+    const filtredItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase()),
+    );
 
     const skeletonArr = [...Array(10)].map((item, index) => (
       <li key={index}>
         <Card isLoading={isLoading} />
       </li>
-    ));  
+    ));
     return isLoading
       ? skeletonArr
       : filtredItems.map((item) => (
@@ -35,26 +31,25 @@ const Catalog = () => {
             />
           </li>
         ));
-    
-  }
-
+  };
 
   return (
     <section className="relative">
       <div className="bc-accent sm:rounded-[60px] rounded-[40px] bg-dark" />
       <div className="container">
         <h1 className="font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-light text-center">
-          <span className="ss:text-[150px] lg:text-[200px] xs:text-[100px] text-[60px] uppercase text-stroke text-light">
+          <span className="ss:text-[150px] lg:text-[200px] xs:text-[100px] text-[60px] uppercase text-light">
             ART
           </span>
           sneakers
         </h1>
-        <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 gap-y-8 w-full">
+        <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 gap-y-8 w-full mb-10">
           {renderItems()}
         </ul>
+        <Pagination onChangePage={(number) => setCurrentPage(number)} />
       </div>
     </section>
   );
 };
 
-export default Catalog
+export default Catalog;
