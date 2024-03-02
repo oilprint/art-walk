@@ -1,6 +1,10 @@
 import ReactPaginate from 'react-paginate';
+import { useContext } from 'react';
+import { ItemsContext } from '../contexts/items';
 
 const Pagination = ({ onChangePage }) => {
+  const { allItems } = useContext(ItemsContext);
+  const pages = Math.ceil(allItems.length / 8);
   return (
     <ReactPaginate
       className="mx-auto flex justify-center items-center gap-3"
@@ -13,7 +17,7 @@ const Pagination = ({ onChangePage }) => {
       nextLabel=">"
       onPageChange={(event) => onChangePage(event.selected + 1)}
       pageRangeDisplayed={8}
-      pageCount={5}
+      pageCount={pages}
       previousLabel="<"
       renderOnZeroPageCount={null}
     />

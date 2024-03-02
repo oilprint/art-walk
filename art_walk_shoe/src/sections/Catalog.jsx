@@ -1,10 +1,21 @@
 import { useContext } from 'react';
 import { ItemsContext } from '../contexts/items';
-
 import { Card, Pagination } from '../components';
+import { motion } from 'framer-motion';
 
 const Catalog = () => {
-  const { items, searchValue, itemsAction, isLoading, setCurrentPage } = useContext(ItemsContext);
+  const { items, itemsAction, isLoading, setCurrentPage } = useContext(ItemsContext);
+
+  const listVariants = {
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+      },
+    }),
+    hidden: { opacity: 0, y: 100 },
+  };
 
   const renderItems = () => {
     const skeletonArr = [...Array(8)].map((item, index) => (
@@ -14,8 +25,13 @@ const Catalog = () => {
     ));
     return isLoading
       ? skeletonArr
-      : items.map((item) => (
-          <li key={item.id}>
+      : items.map((item, i) => (
+          <motion.li
+            key={item.id}
+            variants={listVariants}
+            initial="hidden"
+            animate="visible"
+            custom={i}>
             <Card
               title={item.title}
               id={item.id}
@@ -25,7 +41,7 @@ const Catalog = () => {
               onFavorite={(obj) => itemsAction.onAddToFavorite(obj)}
               isLoading={isLoading}
             />
-          </li>
+          </motion.li>
         ));
   };
 

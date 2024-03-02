@@ -4,6 +4,7 @@ import axios from 'axios';
 
 export const ItemsProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
   const [favoritedItems, setFavoritedItems] = useState(
     JSON.parse(localStorage.getItem('favoritedItems')) || [],
@@ -43,8 +44,12 @@ export const ItemsProvider = ({ children }) => {
         const itemsResponse = await axios.get(
           `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?page=${currentPage}&limit=8${search}`,
         );
+        const allItemsResponse = await axios.get(
+          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?${search}`,
+        );
         setIsLoading(false);
         setItems(itemsResponse.data);
+        setAllItems(allItemsResponse.data);
       } catch (error) {
         alert('Error loading data');
         console.error();
@@ -107,6 +112,7 @@ export const ItemsProvider = ({ children }) => {
         total,
         setCartItems,
         setCurrentPage,
+        allItems,
       }}>
       {children}
     </ItemsContext.Provider>

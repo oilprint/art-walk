@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { ItemsContext } from '../contexts/items';
 import { logo, CartIcon, Favorite, SearchIcon, CloseBtnIcon } from '../assets/icons';
 import { Cart } from '../components';
+import { motion } from 'framer-motion';
 
 const Header = ({ onClickCart }) => {
   const { searchValue } = useContext(ItemsContext);
@@ -33,7 +34,15 @@ const Header = ({ onClickCart }) => {
       </div>
 
       <Link to="/">
-        <img src={logo} alt="logo ArtWalk Shoe Co." width={515} height={90} />
+        <motion.img
+          src={logo}
+          alt="logo ArtWalk Shoe Co."
+          width={515}
+          height={90}
+          whileHover={{
+            scale: 1.2,
+          }}
+        />
       </Link>
 
       <div className="flex justify-end gap-5">
