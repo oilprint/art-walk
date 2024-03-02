@@ -7,18 +7,14 @@ const Catalog = () => {
   const { items, searchValue, itemsAction, isLoading, setCurrentPage } = useContext(ItemsContext);
 
   const renderItems = () => {
-    const filtredItems = items.filter((item) =>
-      item.title.toLowerCase().includes(searchValue.toLowerCase()),
-    );
-
-    const skeletonArr = [...Array(10)].map((item, index) => (
+    const skeletonArr = [...Array(8)].map((item, index) => (
       <li key={index}>
         <Card isLoading={isLoading} />
       </li>
     ));
     return isLoading
       ? skeletonArr
-      : filtredItems.map((item) => (
+      : items.map((item) => (
           <li key={item.id}>
             <Card
               title={item.title}

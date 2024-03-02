@@ -36,10 +36,12 @@ export const ItemsProvider = ({ children }) => {
   }, [favoritedItems]);
 
   useEffect(() => {
+    const search = searchValue ? `&search=${searchValue}` : '';
+
     async function fetchData() {
       try {
         const itemsResponse = await axios.get(
-          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?page=${currentPage}&limit=8`,
+          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?page=${currentPage}&limit=8${search}`,
         );
         setIsLoading(false);
         setItems(itemsResponse.data);
@@ -49,7 +51,7 @@ export const ItemsProvider = ({ children }) => {
       }
     }
     fetchData();
-  }, [currentPage]);
+  }, [currentPage, searchValue]);
 
   const itemsAction = {
     addItemsToCart: (obj) => {
