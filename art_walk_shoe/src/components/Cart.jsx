@@ -58,7 +58,7 @@ const Cart = () => {
                 <button
                   onClick={onClickOrder}
                   type="button"
-                  className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-primary border-primary border-solid hover:bg-light transition ease-in-out duration-300 ">
+                  className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-light border-primary border-solid hover:bg-light transition ease-in-out duration-300 ">
                   Checkout
                 </button>
               </div>

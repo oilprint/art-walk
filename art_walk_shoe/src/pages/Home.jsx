@@ -1,11 +1,12 @@
 // import axios from "axios";
 
-import { Catalog } from '../sections';
+import { Hero, Catalog } from '../sections';
 
-const Home = ({ onBuy }) => {
+const Home = ({}) => {
   return (
     <>
-      <Catalog onBuy={onBuy} />
+      <Hero />
+      <Catalog />
     </>
   );
 };

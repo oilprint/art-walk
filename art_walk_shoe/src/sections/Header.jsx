@@ -5,7 +5,7 @@ import { logo, CartIcon, Favorite, SearchIcon, CloseBtnIcon } from '../assets/ic
 import { Cart } from '../components';
 import { motion } from 'framer-motion';
 
-const Header = ({ onClickCart }) => {
+const Header = ({}) => {
   const { searchValue } = useContext(ItemsContext);
   const { cartOpen } = useContext(ItemsContext);
   const { itemsAction } = useContext(ItemsContext);
@@ -13,82 +13,85 @@ const Header = ({ onClickCart }) => {
   const { cartItems } = useContext(ItemsContext);
 
   return (
-    <header className="container flex-1 flex justify-between items-center py-2 rounded-[40px] border-2 border-dark bg-light ">
-      <div className="relative text-primary ">
-        <SearchIcon className="absolute top-2 left-2" />
+    <header className="container">
+      <nav className="flex flex-wrap justify-between items-center gap-2 sm:py-3 py-1 rounded-[40px] border-2 border-dark bg-light md:max-w-[1200px] max-w-[515px] w-full mx-auto ">
+        <div className="relative text-primary md:-order-1 order-1  ">
+          <SearchIcon className="absolute top-2 left-2" />
 
-        {searchValue && (
-          <CloseBtnIcon
-            onClick={itemsAction.onSearchClear}
-            className="absolute top-2 right-2 cursor-pointer"
-          />
-        )}
-
-        <input
-          onChange={itemsAction.onChangeSearchInput}
-          value={searchValue}
-          type="text"
-          placeholder="Search..."
-          className="text-primary h-10 pl-9 max-w-[250px] w-full rounded-[40px] border border-primary border-solid bg-light placeholder:text-grey placeholder:font-lucky placeholder:tracking-wider"
-        />
-      </div>
-
-      <Link to="/">
-        <motion.img
-          src={logo}
-          alt="logo ArtWalk Shoe Co."
-          width={515}
-          height={90}
-          whileHover={{
-            scale: 1.2,
-            transition: { easy: 'easeInOut', duration: 0.4 },
-          }}
-          onHoverStart={(e) => {}}
-          onHoverEnd={(e) => {}}
-        />
-      </Link>
-
-      <div className="flex justify-end gap-5">
-        <motion.div
-          whileHover={{
-            scale: 1.2,
-            color: '#BC0001',
-            transition: { easy: 'easyInOut' },
-          }}
-          onHoverStart={(e) => {}}
-          onHoverEnd={(e) => {}}>
-          <NavLink
-            to="favorite"
-            className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light hover:text-[#BC0001]">
-            <Favorite />
-          </NavLink>
-        </motion.div>
-
-        <motion.button
-          onClick={itemsAction.onClickOpenCart}
-          type="button"
-          className={`relative cursor-pointer flex flex-1 flex-center items-center border-[2px] border-solid rounded-full border-primary text-primary h-10 w-auto px-3 pypx-2.5  ${
-            cartItems.length > 0 ? 'bg-accent' : 'bg-light'
-          } transition ease-in-out duration-300`}
-          whileHover={{
-            scale: 1.2,
-          }}
-          onHoverStart={(e) => {}}
-          onHoverEnd={(e) => {}}>
-          {cartItems.length > 0 ? (
-            <div className="font-lucky text-dark text-xl ">
-              <span>{total}</span>
-              <span>$</span>
-            </div>
-          ) : (
-            ''
+          {searchValue && (
+            <CloseBtnIcon
+              onClick={itemsAction.onSearchClear}
+              className="absolute top-2 right-2 cursor-pointer"
+            />
           )}
 
-          <CartIcon />
-        </motion.button>
-      </div>
+          <input
+            onChange={itemsAction.onChangeSearchInput}
+            value={searchValue}
+            type="text"
+            placeholder="Search..."
+            className="text-primary h-10 pl-9 xs:max-w-[250px] max-w-[150px] w-full rounded-[40px] border border-primary border-solid bg-light placeholder:text-grey placeholder:font-lucky placeholder:tracking-wider"
+          />
+        </div>
 
-      {cartOpen && <Cart />}
+        <Link to="/">
+          <motion.img
+            className="mx-auto h-auto"
+            src={logo}
+            alt="logo ArtWalk Shoe Co."
+            width={515}
+            height={90}
+            whileHover={{
+              scale: 1.2,
+              transition: { easy: 'easeInOut', duration: 0.4 },
+            }}
+            onHoverStart={(e) => {}}
+            onHoverEnd={(e) => {}}
+          />
+        </Link>
+
+        <div className="flex justify-end gap-5 order-2">
+          <motion.div
+            whileHover={{
+              scale: 1.2,
+              color: '#BC0001',
+              transition: { easy: 'easyInOut' },
+            }}
+            onHoverStart={(e) => {}}
+            onHoverEnd={(e) => {}}>
+            <NavLink
+              to="favorite"
+              className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light hover:text-[#BC0001]">
+              <Favorite />
+            </NavLink>
+          </motion.div>
+
+          <motion.button
+            onClick={itemsAction.onClickOpenCart}
+            type="button"
+            className={`relative cursor-pointer flex flex-1 flex-center items-center border-[2px] border-solid rounded-full border-primary text-primary h-10 w-auto px-3 pypx-2.5  ${
+              cartItems.length > 0 ? 'bg-accent' : 'bg-light'
+            } transition ease-in-out duration-300`}
+            whileHover={{
+              scale: 1.2,
+            }}
+            onHoverStart={(e) => {}}
+            onHoverEnd={(e) => {}}>
+            {cartItems.length > 0 ? (
+              <div className="font-lucky text-dark text-xl ">
+                <span>{total}</span>
+                <span>$</span>
+              </div>
+            ) : (
+              ''
+            )}
+
+            <CartIcon />
+          </motion.button>
+        </div>
+
+        {cartOpen && <Cart />}
+      </nav>
     </header>
   );
 };

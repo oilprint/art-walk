@@ -52,10 +52,10 @@ const Catalog = () => {
   };
 
   return (
-    <section className="relative">
+    <section className="relative py-10" id="catalog">
       <div className="decor-accent sm:rounded-[60px] rounded-[40px] bg-dark ss:h-[40vw] h-[60vw]" />
       <div className="container">
-        <h1 className="block font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-light text-center">
+        <h1 className="block font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-light text-center leading-[0.8] sm:mb-8 mb-5">
           <span className="ss:text-[150px] lg:text-[200px] xs:text-[100px] text-[60px] uppercase text-light">
             ART
           </span>

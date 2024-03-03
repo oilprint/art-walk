@@ -59,7 +59,7 @@ export const ItemsProvider = ({ children }) => {
     }
     fetchData();
 
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, [currentPage, searchValue, categoryID]);
 
   const itemsAction = {

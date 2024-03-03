@@ -86,7 +86,8 @@ body {
 .container {
   max-width: 1200px;
   width: 100%;
-  padding: 0 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .text-stroke {
   -webkit-text-stroke: 2px var(--primary);
