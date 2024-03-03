@@ -4,7 +4,6 @@ import { Card, Pagination, Category } from '../components';
 import { motion } from 'framer-motion';
 
 const Catalog = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const { items, itemsAction, isLoading, setCurrentPage } = useContext(ItemsContext);
 
   const listVariants = {
@@ -47,9 +46,9 @@ const Catalog = () => {
         ));
   };
 
-  const onClickCategory = (index) => {
-    setActiveIndex(index);
-  };
+  // const onClickCategory = (index) => {
+  //   setActiveIndex(index);
+  // };
 
   return (
     <section className="relative py-10" id="catalog">

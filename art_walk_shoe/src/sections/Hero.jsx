@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { shoes } from '../constants';
-import { bigShoe1, bigShoe2, bigShoe3 } from '../assets/images';
+import { bigShoe1, bigShoe2 } from '../assets/images';
 
 const Hero = () => {
   const [bigShoeImg, setBigShoeImg] = useState(bigShoe1);
 
   return (
     <section className="container ">
-      <div className="relative pt-10 pb-[60px]">
+      <div className="relative pt-6 pb-[60px]">
         <div className="absolute top-[110px] left-14">
           <p className="text-xl text-grey font-medium mb-1 uppercase">
             New impressionism collection
@@ -42,13 +42,16 @@ const Hero = () => {
         <ul className="absolute  flex items-center gap-3 bottom-[100px] left-[56px] ">
           {shoes.map((item, index) => (
             <li key={index}>
-              <img
+              <motion.img
+                whileHover={{ scale: 1.1 }}
                 className={`cursor-pointer border-2 border-solid rounded-[20px] ${
                   bigShoeImg === item.bigShoe ? 'border-accent' : 'border-dark'
-                } `}
+                } hover:border-accent transition ease-in-out duration-300`}
                 onClick={() => setBigShoeImg(item.bigShoe)}
                 src={item.thumbnail}
                 alt="new collection"
+                width={160}
+                height={110}
               />
             </li>
           ))}

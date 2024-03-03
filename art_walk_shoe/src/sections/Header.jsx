@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ItemsContext } from '../contexts/items';
 import { logo, CartIcon, Favorite, SearchIcon, CloseBtnIcon } from '../assets/icons';
 import { Cart } from '../components';
@@ -12,9 +12,17 @@ const Header = ({}) => {
   const { total } = useContext(ItemsContext);
   const { cartItems } = useContext(ItemsContext);
 
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setScroll(window.scrollY > 10);
+    });
+  });
+
   return (
-    <header className="container">
-      <nav className="flex flex-wrap justify-between items-center gap-2 sm:py-3 py-1 rounded-[40px] border-2 border-dark bg-light md:max-w-[1200px] max-w-[515px] w-full mx-auto ">
+    <header
+      className={`z-50 inset-x-0 rounded-[20px] bg-light container ${scroll ? 'sticky' : ''}`}>
+      <nav className="flex flex-wrap justify-between items-center gap-2 sm:py-3 py-1 rounded-[40px] border-2 border-dark  md:max-w-[1200px] max-w-[515px] w-full mx-auto ">
         <div className="relative text-primary md:-order-1 order-1  ">
           <SearchIcon className="absolute top-2 left-2" />
 
@@ -45,8 +53,6 @@ const Header = ({}) => {
               scale: 1.2,
               transition: { easy: 'easeInOut', duration: 0.4 },
             }}
-            onHoverStart={(e) => {}}
-            onHoverEnd={(e) => {}}
           />
         </Link>
 
