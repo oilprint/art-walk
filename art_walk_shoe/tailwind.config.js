@@ -21,7 +21,7 @@ export default {
         grey: "#BDC6CB"
       },
     container: {
-      'max-width': '1200px',
+      
       'padding': '15px',
       'center': true
     },

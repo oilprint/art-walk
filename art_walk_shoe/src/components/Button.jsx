@@ -1,17 +1,18 @@
-
-
-const Button = ({label, onClick, isAdded }) => {
+import { motion } from 'framer-motion';
+const Button = ({ label, onClick, isAdded }) => {
   return (
-    <button
+    <motion.button
       onClick={onClick}
+      whileHover={{ scale: 1.2 }}
+      onHoverStart={(e) => {}}
+      onHoverEnd={(e) => {}}
       type="button"
       className={`cursor-pointer shrink-0 px-6 py-2 text-base font-lucky  rounded-[40px] border-2 border-primary border-solid ${
-        isAdded ? "bg-accent text-dark" : "bg-light text-primary"
-      } transition ease-in-out duration-300`}
-    >
+        isAdded ? 'bg-accent text-dark' : 'bg-light text-primary'
+      } transition ease-in-out duration-300`}>
       {label}
-    </button>
+    </motion.button>
   );
-}
+};
 
-export default Button
+export default Button;

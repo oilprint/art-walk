@@ -1,16 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Luckiest+Guy&display=swap')
-
-@tailwind base;
+  @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --dark: #040402;
-  --primary: #296A89;
+  --primary: #296a89;
 }
-
-
 
 html {
   box-sizing: border-box;
@@ -74,7 +70,6 @@ textarea {
   outline: transparent;
 }
 
-
 h1,
 h2,
 h3,
@@ -84,25 +79,26 @@ h6 {
   font: inherit;
 }
 
-
-body{
-  @apply bg-light  font-inter text-primary
+body {
+  @apply bg-light  font-inter text-primary;
 }
 
-
-
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 15px;
+}
 .text-stroke {
   -webkit-text-stroke: 2px var(--primary);
-  text-stroke: 2px  var(--primary);
+  text-stroke: 2px var(--primary);
 }
 
-.bc-accent {
+.decor-accent {
   position: absolute;
   z-index: -1;
   max-width: 1440px;
-  width: calc(100% - 16px) ;
-  max-height:500px;
-  height: 40vw;
+  width: calc(100% - 16px);
+  max-height: 500px;
   margin: 0 auto;
   left: 0;
   right: 0;
@@ -110,5 +106,5 @@ body{
 }
 
 .active {
-  @apply text-accent
+  @apply text-accent;
 }

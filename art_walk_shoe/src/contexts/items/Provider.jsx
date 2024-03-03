@@ -9,8 +9,9 @@ export const ItemsProvider = ({ children }) => {
   const [favoritedItems, setFavoritedItems] = useState(
     JSON.parse(localStorage.getItem('favoritedItems')) || [],
   );
-  // const [favoriteItems, setFavoriteItems] = useState([]);
+
   const [searchValue, setSearchValue] = useState('');
+  const [categoryID, setCategoryID] = useState(0);
   const [cartOpen, setCartOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,14 +39,15 @@ export const ItemsProvider = ({ children }) => {
 
   useEffect(() => {
     const search = searchValue ? `&search=${searchValue}` : '';
+    const category = categoryID > 0 ? `&category=${categoryID}` : '';
 
     async function fetchData() {
       try {
         const itemsResponse = await axios.get(
-          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?page=${currentPage}&limit=8${search}`,
+          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?page=${currentPage}&limit=8${search}${category}`,
         );
         const allItemsResponse = await axios.get(
-          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?${search}`,
+          `https://65d74b6527d9a3bc1d7aa870.mockapi.io/items?${search}${category}`,
         );
         setIsLoading(false);
         setItems(itemsResponse.data);
@@ -56,7 +58,9 @@ export const ItemsProvider = ({ children }) => {
       }
     }
     fetchData();
-  }, [currentPage, searchValue]);
+
+    window.scrollTo(0, 0);
+  }, [currentPage, searchValue, categoryID]);
 
   const itemsAction = {
     addItemsToCart: (obj) => {
@@ -87,6 +91,10 @@ export const ItemsProvider = ({ children }) => {
       setSearchValue('');
     },
 
+    onCLickCategory: (id) => {
+      setCategoryID(id);
+    },
+
     onClickOpenCart: () => setCartOpen(true),
 
     onClickCloseCart: () => setCartOpen(false),
@@ -113,6 +121,7 @@ export const ItemsProvider = ({ children }) => {
         setCartItems,
         setCurrentPage,
         allItems,
+        categoryID,
       }}>
       {children}
     </ItemsContext.Provider>

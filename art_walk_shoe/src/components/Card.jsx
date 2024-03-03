@@ -1,30 +1,17 @@
+import { useContext } from 'react';
+import ContentLoader from 'react-content-loader';
+import { motion } from 'framer-motion';
 
-import { useState } from "react";
-import { useContext } from "react";
-import ContentLoader from "react-content-loader";
+import { Button, Btn } from './index';
+import { Favorite } from '../assets/icons';
+import { ItemsContext } from '../contexts/items';
 
-import { Button, Btn } from "./index";
-import { Favorite  } from "../assets/icons";
-import { ItemsContext } from "../contexts/items";
-
-const Card = ({
-  title,
-  imgUrl,
-  price,
-  onBuy,
-  id,
-  favorited,
-  added,
-  isLoading ,
-  onFavorite,
-}) => {
-
+const Card = ({ title, imgUrl, price, onBuy, id, favorited, added, isLoading, onFavorite }) => {
   const { isItemAdded } = useContext(ItemsContext);
   const { isFavorited } = useContext(ItemsContext);
 
   const onClickBuyNow = () => {
     onBuy({ title, imgUrl, price, id });
-
   };
 
   const onClickFavorite = () => {
@@ -42,8 +29,7 @@ const Card = ({
           height={455}
           viewBox="0 0 280 455"
           backgroundColor="#eaeff1"
-          foregroundColor="#ecebeb"
-        >
+          foregroundColor="#ecebeb">
           <rect x="0" y="334" rx="10" ry="10" width="280" height="40" />
           <rect x="0" y="0" rx="40" ry="40" width="280" height="320" />
           <rect x="1" y="390" rx="10" ry="10" width="90" height="30" />
@@ -52,7 +38,7 @@ const Card = ({
       ) : (
         <>
           <div className="relative">
-            <div className="overflow-hidden rounded-[40px] border  border-primary border-solid w-full mb-2 aspect-[3/4]">
+            <div className="overflow-hidden rounded-[20px] border  border-primary border-solid w-full mb-2 aspect-[3/4]">
               <img
                 className="object-cover h-full"
                 src={imgUrl}
@@ -61,30 +47,35 @@ const Card = ({
                 height="320"
               />
             </div>
-            <div onClick={onClickFavorite} className="absolute top-3 right-3">
+            <motion.div
+              onClick={onClickFavorite}
+              className="absolute top-3 right-3"
+              whileHover={{
+                scale: 1.2,
+                transition: { easy: 'cubic-bezier(.11,-0.51,.71,.42)' },
+              }}
+              onHoverStart={(e) => {}}
+              onHoverEnd={(e) => {}}>
               {isFavorited(id) ? (
                 <Btn Icon={Favorite} isFavorite={isFavorited(id)} />
               ) : (
                 <Btn Icon={Favorite} />
               )}
-            </div>
+            </motion.div>
           </div>
 
           <div className="flex flex-col justify-between grow px-2">
-            <h3 className="text-lg font-[700] leading-[1] text-primary mb-2 ">
+            <h3 className="xs:text-lg text-base font-[700] leading-[1] text-primary mb-2 ">
               {title}
             </h3>
-            <div className="flex justify-between flex-wrap">
-              <div className="mr-6 mb-1 font-lucky text-[32px] text-accent ">
+            <div className="flex justify-between flex-wrap items-center">
+              <div className=" xs:mr-2 mr-6 mb-1 font-lucky  text-accent text-[32px] ">
                 <span>$</span>
                 <span>{price}</span>
               </div>
+
               {isItemAdded(id) ? (
-                <Button
-                  label="Remove"
-                  onClick={onClickBuyNow}
-                  isAdded={isItemAdded(id)}
-                />
+                <Button label="Remove" onClick={onClickBuyNow} isAdded={isItemAdded(id)} />
               ) : (
                 <Button label="Buy now" onClick={onClickBuyNow} />
               )}
@@ -95,6 +86,7 @@ const Card = ({
         </>
       )}
     </article>
-  );}
+  );
+};
 
-export default Card
+export default Card;

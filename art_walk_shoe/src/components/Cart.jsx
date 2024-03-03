@@ -34,8 +34,9 @@ const Cart = () => {
                       />
                     </div>
                     <div className="flex flex-col justify-between py-2 w-full">
-                      <div className="flex gap-5 justify-between">
+                      <div className="flex gap-5 justify-between ">
                         <p>{item.title}</p>
+
                         <Btn Icon={Remove} onClick={() => itemsAction.onRemoveItem(item.id)} />
                       </div>
                       <div className="text-accent text-3xl">

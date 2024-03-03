@@ -41,23 +41,40 @@ const Header = ({ onClickCart }) => {
           height={90}
           whileHover={{
             scale: 1.2,
+            transition: { easy: 'easeInOut', duration: 0.4 },
           }}
+          onHoverStart={(e) => {}}
+          onHoverEnd={(e) => {}}
         />
       </Link>
 
       <div className="flex justify-end gap-5">
-        <NavLink
-          to="favorite"
-          className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light">
-          <Favorite />
-        </NavLink>
+        <motion.div
+          whileHover={{
+            scale: 1.2,
+            color: '#BC0001',
+            transition: { easy: 'easyInOut' },
+          }}
+          onHoverStart={(e) => {}}
+          onHoverEnd={(e) => {}}>
+          <NavLink
+            to="favorite"
+            className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light hover:text-[#BC0001]">
+            <Favorite />
+          </NavLink>
+        </motion.div>
 
-        <button
+        <motion.button
           onClick={itemsAction.onClickOpenCart}
           type="button"
           className={`relative cursor-pointer flex flex-1 flex-center items-center border-[2px] border-solid rounded-full border-primary text-primary h-10 w-auto px-3 pypx-2.5  ${
             cartItems.length > 0 ? 'bg-accent' : 'bg-light'
-          } transition ease-in-out duration-300`}>
+          } transition ease-in-out duration-300`}
+          whileHover={{
+            scale: 1.2,
+          }}
+          onHoverStart={(e) => {}}
+          onHoverEnd={(e) => {}}>
           {cartItems.length > 0 ? (
             <div className="font-lucky text-dark text-xl ">
               <span>{total}</span>
@@ -68,7 +85,7 @@ const Header = ({ onClickCart }) => {
           )}
 
           <CartIcon />
-        </button>
+        </motion.button>
       </div>
 
       {cartOpen && <Cart />}
