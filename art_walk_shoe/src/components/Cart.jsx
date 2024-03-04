@@ -66,58 +66,15 @@ const Cart = () => {
           ) : (
             <Info
               imageUrl={isOrderCompete ? `${completed}` : `${emptyBox}`}
-              title={isOrderCompete ? 'Thanks for your payment!' : 'Your cart is empty'}
+              title={isOrderCompete ? 'Thank you for your order!' : 'Your cart is empty'}
               description={
-                isOrderCompete ? "We've got your order" : 'No items have been added to cart'
+                isOrderCompete
+                  ? 'We have received your order and have already begun processing it.'
+                  : 'No items have been added to cart'
               }
               onClick={() => itemsAction.onClickCloseCart()}
             />
           )}
-          {/* <div className="flex flex-col h-full justify-between">
-            <ul className="overflow-auto max-h-[70vh] ">
-              {items.map((item) => (
-                <li
-                  key={item.id}
-                  className="flex justify-between gap-3 items-stretch py-5"
-                >
-                  <div className="shrink-0 overflow-hidden rounded-xl border border-primary border-solid ">
-                    <img
-                      className="h-full object-cover"
-                      src={item.imgUrl}
-                      alt={item.title}
-                      width={80}
-                      height={106}
-                    />
-                  </div>
-                  <div className="flex flex-col justify-between py-2 w-full">
-                    <div className="flex gap-5 justify-between">
-                      <p>{item.title}</p>
-                      <Btn
-                        Icon={Remove}
-                        onClick={() => onRemoveItem(item.id)}
-                      />
-                    </div>
-                    <div className="text-accent text-3xl">
-                      <span>$</span>
-                      <span>{item.price}</span>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-col items-center ">
-              <div className="flex justify-between text-2xl w-full mb-2">
-                <p>Subtotal: </p>
-                <div>
-                  <span>$</span>
-                  <span>158</span>
-                </div>
-              </div>
-              <button className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-primary border-primary border-solid hover:bg-light transition ease-in-out duration-300 ">
-                Checkout
-              </button>
-            </div>
-          </div> */}
         </div>
 
         <CloseBtn onClick={itemsAction.onClickCloseCart} className="absolute top-4 right-4" />

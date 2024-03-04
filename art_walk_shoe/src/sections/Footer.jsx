@@ -7,10 +7,6 @@ import { animateScroll } from 'react-scroll';
 console.log(socialList);
 
 const Footer = () => {
-  const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
-
   const options = {
     // your options here, for example:
     duration: 500,
@@ -20,11 +16,11 @@ const Footer = () => {
   animateScroll.scrollToTop(options);
 
   return (
-    <footer className="container">
-      <div className="bg-dark rounded-[40px] pt-[60px] pb-6 text-center">
+    <footer className="container pb-5">
+      <div className="bg-dark rounded-[40px] pt-[60px] pb-6 mx-0">
         <a
           onClick={() => animateScroll.scrollToTop(options)}
-          className="flex justify-center items-center mb-8">
+          className="flex justify-center items-center mb-8 w-[125px] mx-auto">
           <motion.img
             className="mx-auto h-auto"
             whileHover={{
@@ -50,7 +46,7 @@ const Footer = () => {
             </li>
           ))}
         </ul>
-        <ul className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-2 max-w-[400px] w-full">
+        <ul className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-2 max-w-[400px] w-full mx-auto">
           <li className="polisyList">{`© ${new Date().getFullYear()}. All rights reserved`}</li>
           <li className="polisyList hover:text-accent transition ease-in-out duration-300">
             <Link to="policy"> Terms </Link>
