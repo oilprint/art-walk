@@ -53,7 +53,8 @@ export const ItemsProvider = ({ children }) => {
         setItems(itemsResponse.data);
         setAllItems(allItemsResponse.data);
       } catch (error) {
-        alert('Error loading data');
+        setItems([]);
+        // alert('Sorry, we do not have data for your request');
         console.error();
       }
     }

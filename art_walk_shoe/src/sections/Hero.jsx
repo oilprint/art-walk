@@ -39,6 +39,7 @@ const Hero = () => {
           height={720}
           className="object-cover rounded-[40px]"
         />
+
         <ul className="absolute  flex items-center gap-3 bottom-[100px] left-[56px] ">
           {shoes.map((item, index) => (
             <li key={index}>

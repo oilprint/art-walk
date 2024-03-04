@@ -1,17 +1,14 @@
-import { ItemsProvider } from "./contexts/items";
+import { ItemsProvider } from './contexts/items';
 
-import { Outlet } from "react-router-dom";
-import { Header } from "./sections";
+import { Outlet } from 'react-router-dom';
+import { Header, Footer } from './sections';
 
 const Layout = () => {
-
-
   return (
     <ItemsProvider>
-     
-      <Header/>
+      <Header />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </ItemsProvider>
   );
 };
