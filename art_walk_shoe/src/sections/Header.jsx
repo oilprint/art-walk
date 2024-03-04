@@ -4,9 +4,8 @@ import { ItemsContext } from '../contexts/items';
 import { logo, CartIcon, Favorite, SearchIcon, CloseBtnIcon } from '../assets/icons';
 import { Cart } from '../components';
 import { motion } from 'framer-motion';
-import { Link as LinkToScroll } from 'react-scroll';
 
-const Header = ({}) => {
+const Header = () => {
   const { searchValue } = useContext(ItemsContext);
   const { cartOpen } = useContext(ItemsContext);
   const { itemsAction } = useContext(ItemsContext);

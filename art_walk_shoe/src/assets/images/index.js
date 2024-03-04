@@ -7,6 +7,7 @@ import thumbnailShoe2 from './thumbnail-shoe2.jpg';
 import thumbnailShoe3 from './thumbnail-shoe3.jpg';
 
 import collDali from './collDali.jpg';
+import errorPage from './errorPage.jpg';
 
 export {
 bigShoe1,
@@ -18,4 +19,5 @@ thumbnailShoe2,
 thumbnailShoe3,
 
 collDali,
+errorPage
 }

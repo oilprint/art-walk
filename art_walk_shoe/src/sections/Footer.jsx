@@ -50,7 +50,7 @@ const Footer = () => {
             </li>
           ))}
         </ul>
-        <ul className="flex justify-center gap-8 mb-2">
+        <ul className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-2 max-w-[400px] w-full">
           <li className="polisyList">{`© ${new Date().getFullYear()}. All rights reserved`}</li>
           <li className="polisyList hover:text-accent transition ease-in-out duration-300">
             <Link to="policy"> Terms </Link>
