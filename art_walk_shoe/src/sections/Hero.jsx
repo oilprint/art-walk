@@ -7,20 +7,20 @@ const Hero = () => {
   const [bigShoeImg, setBigShoeImg] = useState(bigShoe1);
 
   return (
-    <section className="container ">
-      <div className="relative pt-6 pb-[60px]">
-        <div className="absolute top-[110px] left-14">
-          <p className="text-xl text-grey font-medium mb-1 uppercase">
+    <section className="container" id="hero">
+      <div className="relative pt-6 ss:pb-[60px] pb-8">
+        <div className="absolute lg:top-[110px] top-[80px] sm:left-14 left-[5%] right-[5%]">
+          <p className="text-xl text-grey font-medium sm:mb-1  mb-2 uppercase">
             New impressionism collection
           </p>
           <p
-            className={`font-lucky text-[88px] leading-[1] mb-5 ${
+            className={`font-lucky ss:text-[88px] text-[60px]  leading-[1] mb-5 ${
               bigShoeImg === bigShoe2 ? 'text-accent' : 'text-[#C54425]'
             }
             `}>
             Artistry in Motion:
           </p>
-          <h1 className="text-[44px] text-primary font-bold uppercase max-w-[550px] w-full mb-8 ">
+          <h1 className="sm:text-[44px] text-4xl text-primary font-bold uppercase max-w-[550px] w-full mb-8 ">
             Discover Our Inspired Sneaker Collection{' '}
           </h1>
           <motion.a
@@ -40,12 +40,12 @@ const Hero = () => {
           className="object-cover rounded-[40px]"
         />
 
-        <ul className="absolute  flex items-center gap-3 bottom-[100px] left-[56px] ">
+        <ul className="absolute  flex items-center gap-3 bottom-[100px] left-[5%] right-[5%]">
           {shoes.map((item, index) => (
             <li key={index}>
               <motion.img
                 whileHover={{ scale: 1.1 }}
-                className={`cursor-pointer border-2 border-solid rounded-[20px] ${
+                className={`cursor-pointer object-cover border-2 border-solid rounded-[20px] ${
                   bigShoeImg === item.bigShoe ? 'border-accent' : 'border-dark'
                 } hover:border-accent transition ease-in-out duration-300`}
                 onClick={() => setBigShoeImg(item.bigShoe)}

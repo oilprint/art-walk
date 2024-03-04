@@ -6,6 +6,8 @@ import thumbnailShoe1 from './thumbnail-shoe1.jpg';
 import thumbnailShoe2 from './thumbnail-shoe2.jpg';
 import thumbnailShoe3 from './thumbnail-shoe3.jpg';
 
+import collDali from './collDali.jpg';
+
 export {
 bigShoe1,
 bigShoe2,
@@ -14,4 +16,6 @@ bigShoe3,
 thumbnailShoe1,
 thumbnailShoe2,
 thumbnailShoe3,
+
+collDali,
 }

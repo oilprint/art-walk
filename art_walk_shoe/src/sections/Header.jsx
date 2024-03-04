@@ -4,6 +4,7 @@ import { ItemsContext } from '../contexts/items';
 import { logo, CartIcon, Favorite, SearchIcon, CloseBtnIcon } from '../assets/icons';
 import { Cart } from '../components';
 import { motion } from 'framer-motion';
+import { Link as LinkToScroll } from 'react-scroll';
 
 const Header = ({}) => {
   const { searchValue } = useContext(ItemsContext);
@@ -47,8 +48,8 @@ const Header = ({}) => {
             className="mx-auto h-auto"
             src={logo}
             alt="logo ArtWalk Shoe Co."
-            width={515}
-            height={90}
+            width={480}
+            height={84}
             whileHover={{
               scale: 1.2,
               transition: { easy: 'easeInOut', duration: 0.4 },

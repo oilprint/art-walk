@@ -1,12 +1,13 @@
 // import axios from "axios";
 
-import { Hero, Catalog } from '../sections';
+import { Hero, Catalog, Advantages } from '../sections';
 
 const Home = ({}) => {
   return (
     <>
       <Hero />
       <Catalog />
+      <Advantages />
     </>
   );
 };

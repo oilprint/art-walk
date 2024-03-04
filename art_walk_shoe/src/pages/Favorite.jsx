@@ -13,7 +13,7 @@ const Favorite = () => {
 
   return (
     <section>
-      <div className="container">
+      <div className="container pb-20">
         <h1 className="font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-primary text-center mb-10">
           <span className="ss:text-[100px] lg:text-[150px] xs:text-[70px] text-[40px] uppercase text-stroke text-light mr-2">
             My

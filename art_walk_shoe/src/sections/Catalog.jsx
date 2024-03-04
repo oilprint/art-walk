@@ -46,20 +46,16 @@ const Catalog = () => {
         ));
   };
 
-  // const onClickCategory = (index) => {
-  //   setActiveIndex(index);
-  // };
-
   return (
     <section className="relative py-10" id="catalog">
       <div className="decor-accent sm:rounded-[60px] rounded-[40px] bg-dark ss:h-[40vw] h-[60vw]" />
       <div className="container">
-        <h1 className="block font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-light text-center leading-[0.8] sm:mb-8 mb-5">
+        <h2 className="block font-lucky ss:text-[70px] lg:text-[100px] xs:text-[50px] text-[40px] text-light text-center leading-[0.8] sm:mb-8 mb-5">
           <span className="ss:text-[150px] lg:text-[200px] xs:text-[100px] text-[60px] uppercase text-light">
             ART
           </span>
           sneakers
-        </h1>
+        </h2>
         <Category />
         <ul className="grid md:grid-cols-4 ss:grid-cols-3 grid-cols-2 gap-4 sm:gap-y-8 gap-y-5 w-full mb-10">
           {renderItems()}
