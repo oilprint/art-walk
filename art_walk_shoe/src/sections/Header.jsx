@@ -38,13 +38,15 @@ const Header = () => {
             value={searchValue}
             type="text"
             placeholder="Search..."
-            className="text-primary h-10 pl-9 xs:max-w-[250px] max-w-[150px] w-full rounded-[40px] border border-primary border-solid bg-light placeholder:text-grey placeholder:font-lucky placeholder:tracking-wider"
+            className="text-primary h-10 pl-9 xs:max-w-[250px] max-w-[150px] w-full rounded-[40px] border border-primary border-solid bg-light placeholder:text-grey placeholder:font-lucky placeholder:tracking-wider focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent"
           />
         </div>
 
-        <Link to="/">
+        <Link
+          to="/"
+          className="focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent rounded-lg">
           <motion.img
-            className="mx-auto h-auto"
+            className="mx-auto h-auto focus:outline focus:outline-2 focus:outline-offset-2 "
             src={logo}
             alt="logo ArtWalk Shoe Co."
             width={480}
@@ -67,7 +69,7 @@ const Header = () => {
             onHoverEnd={(e) => {}}>
             <NavLink
               to="favorite"
-              className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light hover:text-[#BC0001]">
+              className="cursor-pointer shrink-0 flex justify-center items-center text-primary border-2 border-solid border-primary rounded-full w-10 h-10 bg-light hover:text-[#BC0001] focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent">
               <Favorite />
             </NavLink>
           </motion.div>
@@ -77,7 +79,7 @@ const Header = () => {
             type="button"
             className={`relative cursor-pointer flex flex-1 flex-center items-center border-[2px] border-solid rounded-full border-primary text-primary h-10 w-auto px-3 pypx-2.5  ${
               cartItems.length > 0 ? 'bg-accent' : 'bg-light'
-            } transition ease-in-out duration-300`}
+            } transition ease-in-out duration-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent`}
             whileHover={{
               scale: 1.2,
             }}

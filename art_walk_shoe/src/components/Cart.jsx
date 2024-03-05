@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { ItemsContext } from '../contexts/items';
 import { Remove, emptyBox, completed } from '../assets/icons';
-import { Btn, CloseBtn } from './index';
+import { Btn, ButtonPrimary, CloseBtn } from './index';
 import Info from './Info';
 
 const Cart = () => {
@@ -55,12 +55,7 @@ const Cart = () => {
                     <span>{total}</span>
                   </div>
                 </div>
-                <button
-                  onClick={onClickOrder}
-                  type="button"
-                  className="cursor-pointer shrink-0 px-10 py-2 text-base rounded-[40px] border-2  bg-accent text-light border-primary border-solid hover:bg-light transition ease-in-out duration-300 ">
-                  Checkout
-                </button>
+                <ButtonPrimary onClick={onClickOrder} label="Checkout" />
               </div>
             </div>
           ) : (
@@ -73,6 +68,7 @@ const Cart = () => {
                   : 'No items have been added to cart'
               }
               onClick={() => itemsAction.onClickCloseCart()}
+              label="Go back"
             />
           )}
         </div>

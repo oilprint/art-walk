@@ -7,7 +7,7 @@ const Button = ({ label, onClick, isAdded }) => {
       type="button"
       className={`cursor-pointer shrink-0 px-6 py-2 text-base font-lucky  rounded-[40px] border-2 border-primary border-solid ${
         isAdded ? 'bg-accent text-dark' : 'bg-light text-primary'
-      } transition ease-in-out duration-300`}>
+      } transition ease-in-out duration-300  focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent`}>
       {label}
     </motion.button>
   );

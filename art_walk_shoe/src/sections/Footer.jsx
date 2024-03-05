@@ -17,10 +17,10 @@ const Footer = () => {
 
   return (
     <footer className="container pb-5">
-      <div className="bg-dark rounded-[40px] pt-[60px] pb-6 mx-0">
+      <div className="bg-dark rounded-[40px] pt-[60px] pb-6 mx-0 text-center">
         <a
           onClick={() => animateScroll.scrollToTop(options)}
-          className="flex justify-center items-center mb-8 w-[125px] mx-auto">
+          className="flex justify-center items-center mb-8 w-[125px] mx-auto focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent rounded-lg">
           <motion.img
             className="mx-auto h-auto"
             whileHover={{
@@ -37,7 +37,7 @@ const Footer = () => {
           {socialList.map((item) => (
             <li key={item.id}>
               <a
-                className="hover:text-light transition ease-in-out duration-300"
+                className="hover:text-light transition ease-in-out duration-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent"
                 href={item.href}
                 target="_blank"
                 title={`Look at our ${item.title}`}>
@@ -49,14 +49,22 @@ const Footer = () => {
         <ul className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-2 max-w-[400px] w-full mx-auto">
           <li className="polisyList">{`© ${new Date().getFullYear()}. All rights reserved`}</li>
           <li className="polisyList hover:text-accent transition ease-in-out duration-300">
-            <Link to="policy"> Terms </Link>
+            <Link
+              to="policy"
+              className="focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent">
+              Terms
+            </Link>
           </li>
           <li className="polisyList hover:text-accent transition ease-in-out duration-300">
-            <Link to="policy"> Privacy </Link>
+            <Link
+              to="policy"
+              className="focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent">
+              Privacy
+            </Link>
           </li>
         </ul>
         <a
-          className="text-primary/80 inline-block w-auto hover:text-accent transition ease-in-out duration-300"
+          className=" inline-block mx-auto text-primary/80  hover:text-accent transition ease-in-out duration-300 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent"
           href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=kozlova.ux@gmail.com"
           target="_blank">
           created by kozlova.ux
